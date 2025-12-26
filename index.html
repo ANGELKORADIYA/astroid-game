@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    
+    <!-- Floating HUD -->
+    <div class="hud">
+        <div class="hud-top">
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">High Score</span>
+                    <span class="stat-value" id="highScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Time</span>
+                    <span class="stat-value" id="time">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Level</span>
+                    <span class="stat-value" id="level">1</span>
+                </div>
+            </div>
+            <div class="hud-buttons">
+                <button id="settingsBtn" class="icon-btn">⚙️</button>
+                <button id="pauseBtn" class="icon-btn">⏸️</button>
+                <button id="restartBtn" class="icon-btn">🔄</button>
+            </div>
+        </div>
+        
+        <div class="hud-bottom">
+            <div class="controls-hint">
+                <span>↑↓←→ or WASD Move</span>
+                <span>Space Shoot</span>
+                <span>P Pause</span>
+                <span>M Music</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Over Overlay -->
+    <div id="gameOver" class="game-over hidden">
+        <div class="game-over-content">
+            <h2>💥 Game Over!</h2>
+            <div class="final-stats">
+                <div class="final-stat">
+                    <span class="final-label">Final Score</span>
+                    <span class="final-value" id="finalScore">0</span>
+                </div>
+                <div class="final-stat new-high-score hidden" id="newHighScoreSection">
+                    <span class="final-label">🏆 NEW HIGH SCORE! 🏆</span>
+                    <span class="final-value" id="newHighScore">0</span>
+                </div>
+                <div class="final-stat">
+                    <span class="final-label">Best Score</span>
+                    <span class="final-value" id="bestScore">0</span>
+                </div>
+                <div class="final-stat">
+                    <span class="final-label">Time Survived</span>
+                    <span class="final-value" id="finalTime">00:00</span>
+                </div>
+                <div class="final-stat">
+                    <span class="final-label">Level Reached</span>
+                    <span class="final-value" id="finalLevel">1</span>
+                </div>
+            </div>
+            <div class="game-over-buttons">
+                <button id="playAgainBtn" class="action-btn">🎮 Play Again</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Overlay -->
+    <div id="settingsPanel" class="settings-panel hidden">
+        <div class="settings-content">
+            <h3>⚙️ Settings</h3>
+            <div class="setting-item">
+                <label>Sound Effects</label>
+                <input type="checkbox" id="soundToggle" checked>
+            </div>
+            <div class="setting-item">
+                <label>Background Music</label>
+                <input type="checkbox" id="musicToggle" checked>
+            </div>
+            <div class="setting-item">
+                <label>Music Volume</label>
+                <input type="range" id="musicVolume" min="0" max="100" value="50">
+            </div>
+            <div class="setting-item">
+                <label>Difficulty</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label>Particles</label>
+                <input type="checkbox" id="particlesToggle" checked>
+            </div>
+            <div class="setting-item">
+                <label>Show FPS</label>
+                <input type="checkbox" id="fpsToggle">
+            </div>
+            <div class="setting-item">
+                <label>Ship Color</label>
+                <select id="shipColor">
+                    <option value="#4ecdc4">Cyan</option>
+                    <option value="#ff6b6b">Red</option>
+                    <option value="#95e77e">Green</option>
+                    <option value="#ffd93d">Yellow</option>
+                </select>
+            </div>
+            <button id="closeSettings" class="action-btn">✖️ Close</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
