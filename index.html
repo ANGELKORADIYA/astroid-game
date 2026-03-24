@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asteroid Game</title>
+    <title>Asteroid Game | Pilot your ship and survive the space storm!</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="An exciting and challenging Asteroid arcade game. Pilot your ship, destroy incoming asteroids, and survive the space storm! Built by Angel Koradiya.">
+    <meta name="keywords" content="asteroid game, space shooter, arcade, web game, angelgames, asteroid-game, javascript game, space arcade, Angel Koradiya">
+    <meta name="author" content="Angel Koradiya">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://angelkoradiya.github.io/astroid-game/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angelkoradiya.github.io/astroid-game/">
+    <meta property="og:title" content="Asteroid Game | Action-Packed Space Shooter">
+    <meta property="og:description" content="Pilot your ship, destroy asteroids, and beat your high score in this modern arcade experience.">
+    <meta property="og:image" content="https://angelkoradiya.github.io/astroid-game/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://angelkoradiya.github.io/astroid-game/">
+    <meta property="twitter:title" content="Asteroid Game | Action-Packed Space Shooter">
+    <meta property="twitter:description" content="Pilot your ship, destroy asteroids, and beat your high score in this modern arcade experience.">
+    <meta property="twitter:image" content="https://angelkoradiya.github.io/astroid-game/og-image.jpg">
+
+    <meta name="theme-color" content="#4ecdc4">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <canvas id="gameCanvas"></canvas>
-    
+
     <!-- Floating HUD -->
     <div class="hud">
         <div class="hud-top">
@@ -30,6 +61,13 @@
                     <span class="stat-label">Level</span>
                     <span class="stat-value" id="level">1</span>
                 </div>
+                <div class="stat-item">
+                    <span class="stat-label">Mode</span>
+                    <span class="stat-value" id="modeDisplay">Normal</span>
+                </div>
+            </div>
+            <div class="powerup-status" id="powerupStatus">
+                <!-- Power-ups will appear here -->
             </div>
             <div class="hud-buttons">
                 <button id="settingsBtn" class="icon-btn">⚙️</button>
@@ -37,7 +75,7 @@
                 <button id="restartBtn" class="icon-btn">🔄</button>
             </div>
         </div>
-        
+
         <div class="hud-bottom">
             <div class="controls-hint">
                 <span>↑↓←→ or WASD Move</span>
@@ -47,7 +85,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Game Over Overlay -->
     <div id="gameOver" class="game-over hidden">
         <div class="game-over-content">
@@ -73,13 +111,17 @@
                     <span class="final-label">Level Reached</span>
                     <span class="final-value" id="finalLevel">1</span>
                 </div>
+                <div class="final-stat">
+                    <span class="final-label">Difficulty</span>
+                    <span class="final-value" id="finalMode">Normal</span>
+                </div>
             </div>
             <div class="game-over-buttons">
                 <button id="playAgainBtn" class="action-btn">🎮 Play Again</button>
             </div>
         </div>
     </div>
-    
+
     <!-- Settings Overlay -->
     <div id="settingsPanel" class="settings-panel hidden">
         <div class="settings-content">
@@ -124,7 +166,8 @@
             <button id="closeSettings" class="action-btn">✖️ Close</button>
         </div>
     </div>
-    
+
     <script src="game.js"></script>
 </body>
+
 </html>
